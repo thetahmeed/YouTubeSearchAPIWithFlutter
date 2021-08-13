@@ -1,3 +1,27 @@
+import 'package:elomelo/models/video.dart';
+import 'package:elomelo/screens/video_player.dart';
+import 'package:elomelo/services/api_services.dart';
+import 'package:flutter/material.dart';
+
+class HomePage extends StatefulWidget {
+  HomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<VideoModel>? _videoModel;
+  bool _isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification scrollDetails) {
           if (!_isLoading &&
@@ -8,6 +32,10 @@
           return false;
         },
         child: _getVideos(),
+      ),
+    );
+  }
+
   FutureBuilder _getVideos() {
     return FutureBuilder(
       future: APIService().fetchVideosFromPlaylist(),
@@ -23,6 +51,7 @@
       },
     );
   }
+
   _getMoreVideos() async {
     List<VideoModel> moreVideos =
         await APIService.instance.fetchVideosFromPlaylist();
@@ -55,3 +84,4 @@
       },
     );
   }
+}
