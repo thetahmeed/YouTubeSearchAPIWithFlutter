@@ -1,3 +1,13 @@
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (ScrollNotification scrollDetails) {
+          if (!_isLoading &&
+              scrollDetails.metrics.pixels ==
+                  scrollDetails.metrics.maxScrollExtent) {
+            _getMoreVideos();
+          }
+          return false;
+        },
+        child: _getVideos(),
   FutureBuilder _getVideos() {
     return FutureBuilder(
       future: APIService().fetchVideosFromPlaylist(),
