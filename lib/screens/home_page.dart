@@ -23,6 +23,15 @@
       },
     );
   }
+  _getMoreVideos() async {
+    List<VideoModel> moreVideos =
+        await APIService.instance.fetchVideosFromPlaylist();
+    List<VideoModel> allVideos = _videoModel!..addAll(moreVideos);
+    setState(() {
+      _videoModel = allVideos;
+    });
+  }
+
   _buildBody(List<VideoModel>? videoModel) {
     return ListView.builder(
       itemCount: _videoModel!.length,
