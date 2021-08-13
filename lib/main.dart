@@ -1,4 +1,4 @@
-import 'package:elomelo/ui/home_page.dart';
+import 'package:elomelo/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,11 +9,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Elomelo (এলোমেলো)',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-      home: HomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(title: 'HOME'),
     );
   }
 }

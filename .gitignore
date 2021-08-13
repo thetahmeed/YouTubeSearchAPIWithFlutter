@@ -21,3 +21,4 @@ doc/api/
 *.js.map
 lib/utilities/key.dart
 .flutter-plugins-dependencies
+.flutter-plugins-dependencies
